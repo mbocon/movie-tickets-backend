@@ -1,6 +1,6 @@
 const express = require('express');
-const moviesRouter = require('./controllers/movies');
-const Movie = require('./models/movie');
+const moviesRouter = express.Router();
+const Movie = require('../models/movie');
 
 const admin = require('firebase-admin');
 const serviceAccount = require('../service-account-credentials.json');
