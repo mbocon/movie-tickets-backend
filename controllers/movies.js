@@ -22,8 +22,8 @@ async function isAuthenticated(req, res, next) {
     }
 }
 
-function index(req,res){
-    Movie.find({uId: req.user.uid }, (err, movie) => {
+function index(req, res) {
+    Movie.find({ uId: req.user.uid }, (err, movie) => {
         if (err) {
             res.status(400).json(err);
         } else {
@@ -34,7 +34,7 @@ function index(req,res){
 
 // Index Route - Get all movie from the database 
 moviesRouter.get('/', isAuthenticated, (req, res) => {
-   index(req,res)
+    index(req, res)
 });
 
 // Create Route - Add a new movie to the database
@@ -44,7 +44,7 @@ moviesRouter.post('/', isAuthenticated, (req, res) => {
         if (err) {
             res.status(400).json(err);
         } else {
-            index(req,res)
+            index(req, res)
         }
     })
 });
@@ -66,7 +66,7 @@ moviesRouter.put('/:id', isAuthenticated, (req, res) => {
         if (err) {
             res.status(400).json(err);
         } else {
-            index(req,res)
+            index(req, res)
         }
     })
 });
@@ -77,9 +77,11 @@ moviesRouter.delete('/:id', isAuthenticated, (req, res) => {
         if (err) {
             res.status(400).json(err);
         } else {
-            index(req,res)
+            index(req, res)
         }
     })
 });
 
 module.exports = moviesRouter;
+
+
